@@ -1,5 +1,4 @@
 from argparse import ArgumentParser
-from os import path
 from pathlib import Path
 from shutil import move
 
