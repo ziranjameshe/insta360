@@ -1,6 +1,11 @@
 from argparse import ArgumentParser
 from pathlib import Path
-from shutil import move
+from subprocess import run
+
+
+def bash_move(src: Path, dst: Path) -> None:
+    run(f"mv {src.as_posix()} '{dst.as_posix()}'", shell=True, check=True)
+
 
 if __name__ == "__main__":
     parser = ArgumentParser()
@@ -47,4 +52,4 @@ if __name__ == "__main__":
 
         percent = ("{0:." + str(1) + "f}").format(100 * (i / float(total_files)))
         print(f"Moving {src_file} to {dst_dir} [{percent}% Done]")
-        move(src_file.as_posix(), dst_file.as_posix())
+        bash_move(src_file, dst_file)
