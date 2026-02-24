@@ -5,9 +5,8 @@ from subprocess import run
 
 
 def bash_move(src: Path, dst: Path) -> None:
-    run(f"mv {src.as_posix()} '{dst.as_posix()}'", shell=True, check=True)
-    # run(f"cp {src.as_posix()} '{dst.as_posix()}'", shell=True, check=True)
-    # run(f"rm {src.as_posix()}", shell=True, check=True)
+    run(f"cp {src.as_posix()} '{dst.as_posix()}'", shell=True, check=True)
+    run(f"rm {src.as_posix()}", shell=True, check=True)
 
 
 def process_file(iter: int, src_file: Path, dst_path: Path, total_files: int) -> None:
