@@ -63,8 +63,10 @@ if __name__ == "__main__":
         date_str: str = src_file.stem.split("_")[1]
         dst_dir = args.dst / date_str
         dst_dir.mkdir(exist_ok=True)
+        (dst_dir / "media").mkdir()
+        (dst_dir / "thumbnails").mkdir()
 
-    with ThreadPoolExecutor(max_workers=10) as executor:
+    with ThreadPoolExecutor(max_workers=1) as executor:
         futures = [
             executor.submit(process_file, i, src_file, args.dst, total_files)
             for i, src_file in enumerate(src_files)
